@@ -1,0 +1,10 @@
+name = "FireVM"
+author = "ender"
+description = "A stack-based virtual machine for executing smart contracts. It provides a superset of the "
+
+instruction("ADD"){
+    description = "Addition"
+    hex = 01
+    push = 1
+    pop = 2
+}
