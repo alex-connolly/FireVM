@@ -1,6 +1,8 @@
 package fireVM
 
 import (
+	"axia/fireVM/ops"
+
 	"github.com/end-r/vmgen"
 )
 
@@ -11,63 +13,63 @@ const (
 var (
 	fuels    = map[string]vmgen.FuelFunction{}
 	executes = map[string]vmgen.ExecuteFunction{
-		// arithmetic operations
-		"ADD":    opAdd,
-		"SUB":    opSub,
-		"DIV":    opDiv,
-		"MUL":    opMul,
-		"MOD":    opMod,
-		"ADDMOD": opAddMod,
-		"MULMOD": opMulMod,
-		// comparison operations
-		"LT":     opLt,
-		"GT":     opGt,
-		"SLT":    opSLt,
-		"SGT":    opSGt,
-		"EQ":     opEq,
-		"ISZERO": opIsZero,
-		// bitwise operations
-		"AND": opAnd,
-		"OR":  opOr,
-		"NOT": opNot,
-		"XOR": opXor,
-		// block operations
-		"HASH":       opBlockhash,
-		"COINBASE":   opCoinbase,
-		"TIMESTAMP":  opTimestamp,
-		"NUMBER":     opNumber,
-		"DIFFICULTY": opDifficulty,
-		"FUELLIMIT":  opFuelLimit,
-		// environment operations
-		"ADDRESS":      opAddress,
-		"ORIGIN":       opOrigin,
-		"BALANCE":      opBalance,
-		"CALLER":       opCaller,
-		"CALLVALUE":    opCallValue,
-		"CALLDATALOAD": opCallDataLoad,
-		"CALLDATASIZE": opCallDataSize,
-		"CALLDATACOPY": opCallDataCopy,
-		"CODESIZE":     opCodeSize,
-		"CODECOPY":     opCodeCopy,
-		"FUELPRICE":    opFuelPrice,
-		"EXTCODESIZE":  opExtCodeSize,
-		"EXTCODECOPY":  opExtCodeCopy,
-		// crypto operations
-		"SHA3": opSHA3,
-		//stack operations
-		"POP":  opPop,
-		"PUSH": opPush,
-		"DUP":  opDup,
-		"SWAP": opSwap,
-		// external operations
-		"LOG": opLog,
-		// flow operations
-		"JUMP":     opJump,
-		"JUMPI":    opJumpI,
-		"PC":       opPC,
-		"FUEL":     opFuel,
-		"MSIZE":    opMSize,
-		"JUMPDEST": opJumpDest,
+		// arithmetic ops.Operations
+		"ADD":    ops.OpAdd,
+		"SUB":    ops.OpSub,
+		"DIV":    ops.OpDiv,
+		"MUL":    ops.OpMul,
+		"MOD":    ops.OpMod,
+		"ADDMOD": ops.OpAddMod,
+		"MULMOD": ops.OpMulMod,
+		// comparison ops.Operations
+		"LT":     ops.OpLt,
+		"GT":     ops.OpGt,
+		"SLT":    ops.OpSLt,
+		"SGT":    ops.OpSGt,
+		"EQ":     ops.OpEq,
+		"ISZERO": ops.OpIsZero,
+		// bitwise ops.Operations
+		"AND": ops.OpAnd,
+		"OR":  ops.OpOr,
+		"NOT": ops.OpNot,
+		"XOR": ops.OpXor,
+		// block ops.Operations
+		"HASH":       ops.OpBlockhash,
+		"COINBASE":   ops.OpCoinbase,
+		"TIMESTAMP":  ops.OpTimestamp,
+		"NUMBER":     ops.OpNumber,
+		"DIFFICULTY": ops.OpDifficulty,
+		"FUELLIMIT":  ops.OpFuelLimit,
+		// environment ops.Operations
+		"ADDRESS":          ops.OpAddress,
+		"ORIGIN":           ops.OpOrigin,
+		"BALANCE":          ops.OpBalance,
+		"CALLER":           ops.OpCaller,
+		"CALLVALUE":        ops.OpCallValue,
+		"CALLDATALOAD":     ops.OpCallDataLoad,
+		"CALLDATASIZE":     ops.OpCallDataSize,
+		"CALLDATACops.OpY": ops.OpCallDataCops.Opy,
+		"CODESIZE":         ops.OpCodeSize,
+		"CODECops.OpY":     ops.OpCodeCops.Opy,
+		"FUELPRICE":        ops.OpFuelPrice,
+		"EXTCODESIZE":      ops.OpExtCodeSize,
+		"EXTCODECops.OpY":  ops.OpExtCodeCops.Opy,
+		// crypto ops.Operations
+		"SHA3": ops.OpSHA3,
+		//stack ops.Operations
+		"Pops.Op": ops.OpPop,
+		"PUSH":    ops.OpPush,
+		"DUP":     ops.OpDup,
+		"SWAP":    ops.OpSwap,
+		// external ops.Operations
+		"LOG": ops.OpLog,
+		// flow ops.Operations
+		"JUMP":     ops.OpJump,
+		"JUMPI":    ops.OpJumpI,
+		"PC":       ops.OpPC,
+		"FUEL":     ops.OpFuel,
+		"MSIZE":    ops.OpMSize,
+		"JUMPDEST": ops.OpJumpDest,
 	}
 )
 
