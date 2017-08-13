@@ -2,54 +2,67 @@ package ops
 
 import "github.com/end-r/vmgen"
 
-func OpAddress(vm *vmgen.VM, params []byte) {
+// Address ...
+func Address(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpBalance(vm *vmgen.VM, params []byte) {
+// Balance ...
+func Balance(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpOrigin(vm *vmgen.VM, params []byte) {
+// Origin ...
+func Origin(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCaller(vm *vmgen.VM, params []byte) {
+// Caller ...
+func Caller(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCallValue(vm *vmgen.VM, params []byte) {
+// CallValue ...
+func CallValue(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCallDataLoad(vm *vmgen.VM, params []byte) {
+// CallDataLoad ...
+func CallDataLoad(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCallDataSize(vm *vmgen.VM, params []byte) {
+// CallDataSize ...
+func CallDataSize(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCallDataCopy(vm *vmgen.VM, params []byte) {
+// CallDataCopy ...
+func CallDataCopy(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCodeSize(vm *vmgen.VM, params []byte) {
+// CodeSize ...
+func CodeSize(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCodeCopy(vm *vmgen.VM, params []byte) {
+// CodeCopy ...
+func CodeCopy(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpFuelPrice(vm *vmgen.VM, params []byte) {
+// FuelPrice ...
+func FuelPrice(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpExtCodeSize(vm *vmgen.VM, params []byte) {
+// ExtCodeSize ...
+func ExtCodeSize(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpExtCodeCopy(vm *vmgen.VM, params []byte) {
+// ExtCodeCopy ...
+func ExtCodeCopy(vm *vmgen.VM, params []byte) {
 
 }

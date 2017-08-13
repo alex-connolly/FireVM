@@ -2,26 +2,32 @@ package ops
 
 import "github.com/end-r/vmgen"
 
-func OpJump(vm *vmgen.VM, params []byte) {
+// Jump ...
+func Jump(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpJumpI(vm *vmgen.VM, params []byte) {
+// JumpI ...
+func JumpI(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpPC(vm *vmgen.VM, params []byte) {
+// PC ...
+func PC(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpFuel(vm *vmgen.VM, params []byte) {
+// Fuel ...
+func Fuel(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpMSize(vm *vmgen.VM, params []byte) {
+// MSize ...
+func MSize(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpJumpDest(vm *vmgen.VM, params []byte) {
+// JumpDest ...
+func JumpDest(vm *vmgen.VM, params []byte) {
 
 }

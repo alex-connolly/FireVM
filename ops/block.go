@@ -2,26 +2,32 @@ package ops
 
 import "github.com/end-r/vmgen"
 
-func OpBlockhash(vm *vmgen.VM, params []byte) {
+// Blockhash ...
+func Blockhash(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpCoinbase(vm *vmgen.VM, params []byte) {
+// Coinbase ...
+func Coinbase(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpTimestamp(vm *vmgen.VM, params []byte) {
+// Timestamp ...
+func Timestamp(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpNumber(vm *vmgen.VM, params []byte) {
+// Number ...
+func Number(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpDifficulty(vm *vmgen.VM, params []byte) {
+// Difficulty ...
+func Difficulty(vm *vmgen.VM, params []byte) {
 
 }
 
-func OpFuelLimit(vm *vmgen.VM, params []byte) {
+// FuelLimit ...
+func FuelLimit(vm *vmgen.VM, params []byte) {
 
 }
