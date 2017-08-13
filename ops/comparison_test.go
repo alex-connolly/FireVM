@@ -9,7 +9,7 @@ import (
 	"github.com/end-r/goutil"
 )
 
-func TestOpLt(t *testing.T) {
+func TestLt(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -20,7 +20,7 @@ func TestOpLt(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetUint64(1)) == 0, "wrong lt value")
 }
 
-func TestOpGt(t *testing.T) {
+func TestGt(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 2, 4
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -31,15 +31,15 @@ func TestOpGt(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetUint64(1)) == 0, "wrong gt value")
 }
 
-func TestOpSLt(t *testing.T) {
+func TestSLt(t *testing.T) {
 
 }
 
-func TestOpSGt(t *testing.T) {
+func TestSGt(t *testing.T) {
 
 }
 
-func TestOpEq(t *testing.T) {
+func TestEq(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 4
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -50,7 +50,7 @@ func TestOpEq(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetUint64(1)) == 0, "wrong eq value")
 }
 
-func TestOpIsZero(t *testing.T) {
+func TestIsZero(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1 := 0
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())

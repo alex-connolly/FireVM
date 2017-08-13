@@ -2,18 +2,18 @@ package ops
 
 import "testing"
 
-func TestOpMLoad(t *testing.T) {
+func TestMLoad(t *testing.T) {
 
 }
 
-func TestOpMStore(t *testing.T) {
+func TestMStore(t *testing.T) {
 
 }
 
-func TestOpSLoad(t *testing.T) {
+func TestSLoad(t *testing.T) {
 
 }
 
-func TestOpSStore(t *testing.T) {
+func TestSStore(t *testing.T) {
 
 }

@@ -2,6 +2,6 @@ package ops
 
 import "testing"
 
-func TestOpLog(t *testing.T) {
+func TestLog(t *testing.T) {
 
 }

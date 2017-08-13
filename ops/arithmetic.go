@@ -11,7 +11,7 @@ var (
 )
 
 // Add ...
-func Add(vm *vmgen.VM, params []byte) {
+func Add(vm *vmgen.VM) {
 	executeAddition(vm.Stack)
 }
 
@@ -23,7 +23,7 @@ func executeAddition(s *vmgen.Stack) {
 }
 
 // Sub ...
-func Sub(vm *vmgen.VM, params []byte) {
+func Sub(vm *vmgen.VM) {
 	executeAddition(vm.Stack)
 }
 
@@ -35,7 +35,7 @@ func executeSubtraction(s *vmgen.Stack) {
 }
 
 // Mul ...
-func Mul(vm *vmgen.VM, params []byte) {
+func Mul(vm *vmgen.VM) {
 	executeMultiplication(vm.Stack)
 }
 
@@ -47,7 +47,7 @@ func executeMultiplication(s *vmgen.Stack) {
 }
 
 // Div ...
-func Div(vm *vmgen.VM, params []byte) {
+func Div(vm *vmgen.VM) {
 	executeDivision(vm.Stack)
 }
 
@@ -59,7 +59,7 @@ func executeDivision(s *vmgen.Stack) {
 }
 
 // Mod ...
-func Mod(vm *vmgen.VM, params []byte) {
+func Mod(vm *vmgen.VM) {
 	executeModulo(vm.Stack)
 }
 
@@ -71,7 +71,7 @@ func executeModulo(s *vmgen.Stack) {
 }
 
 // AddMod ...
-func AddMod(vm *vmgen.VM, params []byte) {
+func AddMod(vm *vmgen.VM) {
 	executeAddMod(vm.Stack)
 }
 
@@ -89,7 +89,7 @@ func executeAddMod(s *vmgen.Stack) {
 }
 
 // MulMod ...
-func MulMod(vm *vmgen.VM, params []byte) {
+func MulMod(vm *vmgen.VM) {
 	executeMulMod(vm.Stack)
 }
 

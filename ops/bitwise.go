@@ -7,7 +7,7 @@ import (
 )
 
 // And ...
-func And(vm *vmgen.VM, params []byte) {
+func And(vm *vmgen.VM) {
 	executeAnd(vm.Stack)
 }
 
@@ -19,7 +19,7 @@ func executeAnd(s *vmgen.Stack) {
 }
 
 // Or ...
-func Or(vm *vmgen.VM, params []byte) {
+func Or(vm *vmgen.VM) {
 	executeOr(vm.Stack)
 }
 
@@ -31,7 +31,7 @@ func executeOr(s *vmgen.Stack) {
 }
 
 // Xor ..
-func Xor(vm *vmgen.VM, params []byte) {
+func Xor(vm *vmgen.VM) {
 	executeXor(vm.Stack)
 }
 
@@ -43,7 +43,7 @@ func executeXor(s *vmgen.Stack) {
 }
 
 // Not ...
-func Not(vm *vmgen.VM, params []byte) {
+func Not(vm *vmgen.VM) {
 	executeNot(vm.Stack)
 }
 

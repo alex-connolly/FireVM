@@ -1,55 +1,59 @@
 package ops
 
-import "testing"
+import (
+	"axia/vmgen"
+	"testing"
+)
 
-func TestOpAddress(t *testing.T) {
-
-}
-
-func TestOpBalance(t *testing.T) {
-
-}
-
-func TestOpOrigin(t *testing.T) {
+func TestAddress(t *testing.T) {
+	s := new(vmgen.Stack)
 
 }
 
-func TestOpCaller(t *testing.T) {
+func TestBalance(t *testing.T) {
 
 }
 
-func TestOpCallValue(t *testing.T) {
+func TestOrigin(t *testing.T) {
 
 }
 
-func TestOpCallDataLoad(t *testing.T) {
+func TestCaller(t *testing.T) {
 
 }
 
-func TestOpCallDataSize(t *testing.T) {
+func TestCallValue(t *testing.T) {
 
 }
 
-func TestOpCallDataCopy(t *testing.T) {
+func TestCallDataLoad(t *testing.T) {
 
 }
 
-func TestOpCodeSize(t *testing.T) {
+func TestCallDataSize(t *testing.T) {
 
 }
 
-func TestOpCodeCopy(t *testing.T) {
+func TestCallDataCopy(t *testing.T) {
 
 }
 
-func TestOpFuelPrice(t *testing.T) {
+func TestCodeSize(t *testing.T) {
 
 }
 
-func TestOpExtCodeSize(t *testing.T) {
+func TestCodeCopy(t *testing.T) {
 
 }
 
-func TestOpExtCodeCopy(t *testing.T) {
+func TestFuelPrice(t *testing.T) {
+
+}
+
+func TestExtCodeSize(t *testing.T) {
+
+}
+
+func TestExtCodeCopy(t *testing.T) {
 
 }

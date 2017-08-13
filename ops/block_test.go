@@ -1,27 +1,53 @@
 package ops
 
-import "testing"
+import (
+	"testing"
 
-func TestOpBlockhash(t *testing.T) {
+	"github.com/end-r/vmgen"
 
-}
+	"github.com/end-r/goutil"
+)
 
-func TestOpCoinbase(t *testing.T) {
-
-}
-
-func TestOpTimestamp(t *testing.T) {
+func TestBlockhash(t *testing.T) {
 
 }
 
-func TestOpNumber(t *testing.T) {
-
+func TestCoinbase(t *testing.T) {
+	s := new(vmgen.Stack)
+	e := make(vmgen.Environment)
+	goutil.Assert(t, s.Size() == 0, "wrong starting size")
+	e["coinbase"] = []byte("random")
+	executeCoinbase(s, e)
 }
 
-func TestOpDifficulty(t *testing.T) {
-
+func TestTimestamp(t *testing.T) {
+	s := new(vmgen.Stack)
+	e := make(vmgen.Environment)
+	goutil.Assert(t, s.Size() == 0, "wrong starting size")
+	e["coinbase"] = []byte("random")
+	executeCoinbase(s, e)
 }
 
-func TestOpFuelLimit(t *testing.T) {
+func TestNumber(t *testing.T) {
+	s := new(vmgen.Stack)
+	e := make(vmgen.Environment)
+	goutil.Assert(t, s.Size() == 0, "wrong starting size")
+	e["blockNumber"] = []byte("random")
+	executeNumber(s, e)
+}
 
+func TestDifficulty(t *testing.T) {
+	s := new(vmgen.Stack)
+	e := make(vmgen.Environment)
+	goutil.Assert(t, s.Size() == 0, "wrong starting size")
+	e["difficulty"] = []byte("random")
+	executeDifficulty(s, e)
+}
+
+func TestFuelLimit(t *testing.T) {
+	s := new(vmgen.Stack)
+	e := make(vmgen.Environment)
+	goutil.Assert(t, s.Size() == 0, "wrong starting size")
+	e["fuelLimit"] = []byte("random")
+	executeFuelLimit(s, e)
 }

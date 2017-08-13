@@ -3,21 +3,21 @@ package ops
 import "github.com/end-r/vmgen"
 
 // MLoad ...
-func MLoad(vm *vmgen.VM, params []byte) {
+func MLoad(vm *vmgen.VM) {
 
 }
 
 // MStore ...
-func MStore(vm *vmgen.VM, params []byte) {
+func MStore(vm *vmgen.VM) {
 
 }
 
 // SLoad ...
-func SLoad(vm *vmgen.VM, params []byte) {
+func SLoad(vm *vmgen.VM) {
 
 }
 
 // SStore ...
-func SStore(vm *vmgen.VM, params []byte) {
+func SStore(vm *vmgen.VM) {
 
 }

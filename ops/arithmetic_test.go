@@ -9,7 +9,7 @@ import (
 	"github.com/end-r/vmgen"
 )
 
-func TestOpAdd(t *testing.T) {
+func TestAdd(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -20,7 +20,7 @@ func TestOpAdd(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1+o2))) == 0, "wrong add value")
 }
 
-func TestOpSub(t *testing.T) {
+func TestSub(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -31,7 +31,7 @@ func TestOpSub(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1-o2))) == 0, "wrong sub value")
 }
 
-func TestOpMul(t *testing.T) {
+func TestMul(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -42,7 +42,7 @@ func TestOpMul(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1*o2))) == 0, "wrong mul value")
 }
 
-func TestOpDiv(t *testing.T) {
+func TestDiv(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -53,7 +53,7 @@ func TestOpDiv(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1/o2))) == 0, fmt.Sprintf("wrong div value: %s", c.String()))
 }
 
-func TestOpMod(t *testing.T) {
+func TestMod(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -64,7 +64,7 @@ func TestOpMod(t *testing.T) {
 	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1%o2))) == 0, "wrong mod value")
 }
 
-func TestOpAddMod(t *testing.T) {
+func TestAddMod(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
@@ -75,7 +75,7 @@ func TestOpAddMod(t *testing.T) {
 
 }
 
-func TestOpMulMod(t *testing.T) {
+func TestMulMod(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
 	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())

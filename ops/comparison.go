@@ -7,7 +7,7 @@ import (
 )
 
 // Lt ...
-func Lt(vm *vmgen.VM, params []byte) {
+func Lt(vm *vmgen.VM) {
 	executeLt(vm.Stack)
 }
 
@@ -24,7 +24,7 @@ func executeLt(s *vmgen.Stack) {
 }
 
 // Gt ...
-func Gt(vm *vmgen.VM, params []byte) {
+func Gt(vm *vmgen.VM) {
 	executeGt(vm.Stack)
 }
 
@@ -41,17 +41,17 @@ func executeGt(s *vmgen.Stack) {
 }
 
 // SLt ...
-func SLt(vm *vmgen.VM, params []byte) {
+func SLt(vm *vmgen.VM) {
 
 }
 
 // SGt ...
-func SGt(vm *vmgen.VM, params []byte) {
+func SGt(vm *vmgen.VM) {
 
 }
 
 // Eq ...
-func Eq(vm *vmgen.VM, params []byte) {
+func Eq(vm *vmgen.VM) {
 	executeEq(vm.Stack)
 }
 
@@ -68,7 +68,7 @@ func executeEq(s *vmgen.Stack) {
 }
 
 // IsZero ...
-func IsZero(vm *vmgen.VM, params []byte) {
+func IsZero(vm *vmgen.VM) {
 	executeIsZero(vm.Stack)
 }
 
