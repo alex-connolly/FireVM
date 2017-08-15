@@ -1,6 +1,7 @@
 package ops
 
 import (
+	"axia/go-axia/axia"
 	"demos/ansible/go-ethereum-master/common"
 	"math/big"
 
@@ -21,8 +22,10 @@ func Balance(vm *vmgen.VM) {
 	executeBalance(vm.Stack, vm.Contract)
 }
 
-func executeBalance(s *vmgen.Stack, c *vmgen.Contract) {
-	s.Push(c.Address)
+func executeBalance(s *vmgen.Stack, state *vmgen.State) {
+	a := axia.BigToAddress(s.Pop(1))
+	balance := state.GetBalance(a)
+	s.Push(new(big.Int).Set(balance))
 }
 
 // Origin ...
@@ -49,7 +52,8 @@ func CallValue(vm *vmgen.VM) {
 }
 
 func executeCallValue(s *vmgen.Stack, c *vmgen.Contract) {
-	s.Push(createBigInt(c.value))
+	a := createBigInt(c.value)
+	s.Push(a)
 }
 
 // CallDataLoad ...
@@ -57,8 +61,8 @@ func CallDataLoad(vm *vmgen.VM) {
 	executeCallDataLoad(vm.Stack)
 }
 
-func executeCallDataLoad(s *vmgen.Stack) {
-	stack.push(createBigInt(getData(contract.Input, s.Pop(1), common.Big32)))
+func executeCallDataLoad(s *vmgen.Stack, c *vmgen.Contract) {
+	s.Push(createBigInt(getData(c.Input, s.Pop(1), new(big.Int).SetInt64(32))))
 }
 
 // CallDataSize ...
@@ -67,23 +71,30 @@ func CallDataSize(vm *vmgen.VM) {
 }
 
 func executeCallDataSize(s *vmgen.Stack, c *vmgen.Contract) {
-	s.Push(new(big.Int).SetInt64(int64(len(c.Input))))
+	a := new(big.Int).SetInt64(int64(len(c.Input)))
+	s.Push(a)
 }
 
 // CallDataCopy ...
 func CallDataCopy(vm *vmgen.VM) {
-	executeCallDataCopy(vm.Stack)
+	executeCallDataCopy(vm.Stack, vm.Memory["memory"], vm.Contract)
 }
 
-func executeCallDataCopy(s *vmgen.Stack) {
+func executeCallDataCopy(s *vmgen.Stack, m vmgen.Memory, c vmgen.Contract) {
+	mOff := s.Pop(1)
+	cOff := s.Pop(1)
+	l := s.Pop(1)
+	m.Set(mOff.Uint64(), l.Uint64(), getData(c.Input, cOff, l))
 }
 
 // CodeSize ...
 func CodeSize(vm *vmgen.VM) {
-	executeCodeSize(vm.Stack)
+	executeCodeSize(vm.Stack, vm.Contract)
 }
 
-func executeCodeSize(s *vmgen.Stack) {
+func executeCodeSize(s *vmgen.Stack, c vmgen.Contract) {
+	a := new(big.Int).SetInt64(int64(len(c.Code)))
+	s.Push(a)
 }
 
 // CodeCopy ...
@@ -91,7 +102,16 @@ func CodeCopy(vm *vmgen.VM) {
 	executeCodeCopy(vm.Stack)
 }
 
-func executeCodeCopy(s *vmgen.Stack) {
+func executeCodeCopy(s *vmgen.Stack, c vmgen.Contract) {
+	mOff := s.Pop(1)
+	cOff := s.Pop(1)
+	l := s.Pop(1)
+	codeCopy := getData(contract.Code, cOff, l)
+
+	memory.Set(mOff.Uint64(), l.Uint64(), codeCopy)
+
+	evm.interpreter.intPool.put(mOff, cOff, l)
+	return nil, nil
 }
 
 // FuelPrice ...
@@ -100,20 +120,32 @@ func FuelPrice(vm *vmgen.VM) {
 }
 
 func executeFuelPrice(s *vmgen.Stack) {
+	a := new(big.Int).Set(vm.FuelPrice)
+	s.Push(a)
 }
 
 // ExtCodeSize ...
 func ExtCodeSize(vm *vmgen.VM) {
-	executeExtCodeSize(vm.Stack)
+	executeExtCodeSize(vm.Stack, vm.State)
 }
 
-func executeExtCodeSize(s *vmgen.Stack) {
+func executeExtCodeSize(s *vmgen.Stack, state vmgen.State) {
+	a := s.Pop(1)
+	addr := bytesToAddress(a)
+	a.SetInt64(state.GetCodeSize(addr))
+	s.Push(a)
 }
 
 // ExtCodeCopy ...
 func ExtCodeCopy(vm *vmgen.VM) {
-	executeExtCodeCopy(vm.Stack)
+	executeExtCodeCopy(vm.Stack, vm.Memory["memory"], vm.State)
 }
 
-func executeExtCodeCopy(s *vmgen.Stack) {
+func executeExtCodeCopy(s *vmgen.Stack, m vmgen.Memory, state vmgen.State) {
+	addr = common.BigToAddress(stack.pop())
+	mOff = stack.pop()
+	cOff = stack.pop()
+	l = stack.pop()
+	codeCopy := getData(state.GetCode(addr), cOff, l)
+	memory.Set(mOff.Uint64(), l.Uint64(), codeCopy)
 }

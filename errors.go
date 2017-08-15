@@ -2,6 +2,7 @@ package firevm
 
 import "errors"
 
+// taken from the EVM TODO: update
 var (
 	ErrOutOfGas            = errors.New("out of gas")
 	ErrCodeStoreOutOfGas   = errors.New("contract creation code storage out of gas")
