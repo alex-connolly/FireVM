@@ -1,8 +1,8 @@
 package ops
 
 import (
-	"axia/go-axia/axia"
-	"demos/ansible/go-ethereum-master/common"
+	"github.com/end-r/go-axia/axia"
+
 	"math/big"
 
 	"github.com/end-r/vmgen"
@@ -33,8 +33,8 @@ func Origin(vm *vmgen.VM) {
 	executeOrigin(vm.Stack, vm.Environment)
 }
 
-func executeOrigin(s *vmgen.Stack, e vmgen.Environment) {
-	s.Push(e["origin"])
+func executeOrigin(s *vmgen.Stack, a vmgen.Address) {
+	s.Push(a.Big())
 }
 
 // Caller ...
@@ -142,7 +142,7 @@ func ExtCodeCopy(vm *vmgen.VM) {
 }
 
 func executeExtCodeCopy(s *vmgen.Stack, m vmgen.Memory, state vmgen.State) {
-	addr = common.BigToAddress(stack.pop())
+	addr = bigToAddress(stack.pop())
 	mOff = stack.pop()
 	cOff = stack.pop()
 	l = stack.pop()

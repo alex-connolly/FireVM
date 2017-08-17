@@ -1,7 +1,6 @@
 package ops
 
 import (
-	"demos/ansible/go-ethereum-master/core/vm"
 	"math/big"
 
 	"github.com/end-r/vmgen"
@@ -42,7 +41,7 @@ func MSize(vm *vmgen.VM) {
 	executeMSize(vm.Stack)
 }
 
-func executeMSize(s *vmgen.Stack, m vm.Memory) {
+func executeMSize(s *vmgen.Stack, m vmgen.Memory) {
 	a := new(big.Int).setInt64(int64(m.Length()))
 	s.Push(a)
 }

@@ -1,9 +1,10 @@
 package ops
 
 import (
-	"axia/vmgen"
 	"math/big"
 	"testing"
+
+	"github.com/end-r/vmgen"
 
 	"github.com/end-r/goutil"
 )
@@ -29,7 +30,11 @@ func TestPush(t *testing.T) {
 }
 
 func TestDup(t *testing.T) {
-
+	s := new(vmgen.Stack)
+	goutil.Assert(t, s.Size() == 0, "wrong stack size")
+	c := vmgen.NewInput("01AA")
+	executePush(s, c)
+	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 }
 
 func TestSwap(t *testing.T) {

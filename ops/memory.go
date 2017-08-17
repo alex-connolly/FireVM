@@ -1,7 +1,6 @@
 package ops
 
 import (
-	"demos/ansible/go-ethereum-master/common"
 	"math/big"
 
 	"github.com/end-r/vmgen"
@@ -34,8 +33,7 @@ func SLoad(vm *vmgen.VM) {
 }
 
 func executeSLoad(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
-	loc := common.BigToHash(s.Pop(1))
-	val := state.GetState(c.Address(), loc).Big()
+
 	s.Push(val)
 }
 
@@ -45,7 +43,5 @@ func SStore(vm *vmgen.VM) {
 }
 
 func executeSStore(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
-	loc := util.BigToHash(stack.pop())
-	val := stack.pop()
-	evm.StateDB.SetState(contract.Address(), loc, common.BigToHash(val))
+
 }
