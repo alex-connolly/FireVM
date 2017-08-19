@@ -2,26 +2,246 @@ name = "FireVM"
 author = "ender"
 description = "A stack-based virtual machine for executing smart contracts."
 
-instruction("ADD"){
-    description = "Addition"
-    hex = 01
-    push = 1
-    pop = 2
-    fuel = 10
+category("ARITHMETIC"){
+
+    description = "Basic arithmetic operations."
+
+    instruction("ADD", "01"){
+        description = "Addition"
+        validate = 2
+        fuel = 10
+    }
+
+    instruction("SUB", "02"){
+        description = "Subtraction"
+        validate = 2
+        fuel = 10
+    }
+
+    instruction("MUL", "03"){
+        description = "Multiplication"
+        validate = 2
+        fuel = 10
+    }
+
+    instruction("DIV", "04"){
+        description = "Multiplication"
+        validate = 2
+        fuel = 10
+    }
+
+    instruction("MOD", "05"){
+        validate = 2
+    }
 }
 
-instruction("SUB"){
-    description = "Subtraction"
-    hex = 02
-    push = 1
-    pop = 2
-    fuel = 10
+category("Crypto"){
+
+    description = "Cryptographic "
+
+    instruction("SHA3", "30"){
+
+    }
 }
 
-instruction("MUL"){
-    description = "Multiplication"
-    hex = 03
-    push = 1
-    pop = 2
-    fuel = 10
+category("Comparison"){
+
+    description = "Comparison operations."
+
+    instruction("LT"){
+
+    }
+
+    instruction("GT"){
+
+    }
+
+    instruction("SLT"){
+
+    }
+
+    instruction("SGT"){
+
+    }
+
+    instruction("EQ"){
+
+    }
+
+    instruction("ISZERO"){
+
+    }
+}
+
+category("BITWISE"){
+
+    instruction("AND"){
+
+    }
+
+    instruction("OR"){
+
+    }
+
+    instruction("XOR"){
+
+    }
+
+    instruction("NOT"){
+
+    }
+
+}
+
+category("ENV"){
+
+    instruction("ADDRESS"){
+
+    }
+
+    instruction("BALANCE"){
+
+    }
+
+    instruction("ORIGIN"){
+
+    }
+
+    instruction("CALLER"){
+
+    }
+
+    instruction("CALLVALUE"){
+
+    }
+
+    instruction("CALLDATALOAD"){
+
+    }
+
+    instruction("CALLDATASIZE"){
+
+    }
+
+    instruction("CALLDATACOPY"){
+
+    }
+
+    instruction("CODESIZE"){
+
+    }
+
+    instruction("CODECOPY"){
+
+    }
+
+    instruction("FUELCOST"){
+
+    }
+
+    instruction("EXTCODESIZE"){
+
+    }
+
+    instruction("EXTCODECOPY"){
+
+    }
+
+}
+
+category("BLOCK"){
+
+    description = "Operations which relate to the current block."
+
+    instruction("BLOCKHASH"){
+
+    }
+
+    instruction("COINBASE"){
+
+    }
+
+    instruction("TIMESTAMP"){
+
+    }
+
+    instruction("NUMBER"){
+
+    }
+
+    instruction("DIFFICULTY"){
+
+    }
+
+    instruction("FUELLIMIT"){
+
+    }
+
+}
+
+category("FLOW"){
+
+    instruction("JUMP", "70"){
+
+    }
+
+    instruction("JUMPI", "71"){
+
+    }
+
+    instruction("PC", "72"){
+
+    }
+
+    instruction("FUEL", "73"){
+
+    }
+
+    instruction("JUMPDEST", "74"){
+
+    }
+
+    instruction("STOP", "75"){
+
+    }
+
+    instruction("RETURN", "76"){
+
+    }
+}
+
+category("MEMORY"){
+    instruction("GET", "40"){
+
+    }
+
+    instruction("SET", "41"){
+
+    }
+
+    instruction("STORE", "42"){
+
+    }
+
+    instruction("LOAD", "43"){
+
+    }
+    instruction("MSIZE", "44"){
+
+    }
+}
+
+category("STACK"){
+    instruction("POP", "60"){
+
+    }
+    instruction("PUSH", "61"){
+
+    }
+    instruction("DUP", "62"){
+
+    }
+    instruction("SWAP", "63"){
+
+    }
 }

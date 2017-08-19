@@ -12,11 +12,9 @@ func Lt(vm *vmgen.VM) {
 }
 
 func executeLt(s *vmgen.Stack) {
-	x := createBigInt(s.Pop(1))
-	y := createBigInt(s.Pop(1))
+	x := bigInt(s.Pop())
+	y := bigInt(s.Pop())
 	if x.Cmp(y) < 0 {
-		// in EVM this comes from the int pool
-		// TODO: why?
 		s.Push(new(big.Int).SetUint64(1).Bytes())
 	} else {
 		s.Push(new(big.Int).Bytes())
@@ -29,11 +27,9 @@ func Gt(vm *vmgen.VM) {
 }
 
 func executeGt(s *vmgen.Stack) {
-	x := createBigInt(s.Pop(1))
-	y := createBigInt(s.Pop(1))
+	x := bigInt(s.Pop())
+	y := bigInt(s.Pop())
 	if x.Cmp(y) > 0 {
-		// in EVM this comes from the int pool
-		// TODO: why?
 		s.Push(new(big.Int).SetUint64(1).Bytes())
 	} else {
 		s.Push(new(big.Int).Bytes())
@@ -56,8 +52,8 @@ func Eq(vm *vmgen.VM) {
 }
 
 func executeEq(s *vmgen.Stack) {
-	x := createBigInt(s.Pop(1))
-	y := createBigInt(s.Pop(1))
+	x := bigInt(s.Pop())
+	y := bigInt(s.Pop())
 	if x.Cmp(y) == 0 {
 		// in EVM this comes from the int pool
 		// TODO: why?
@@ -73,12 +69,10 @@ func IsZero(vm *vmgen.VM) {
 }
 
 func executeIsZero(s *vmgen.Stack) {
-	x := createBigInt(s.Pop(1))
+	x := bigInt(s.Pop())
 	if x.Sign() > 0 {
 		s.Push(new(big.Int).Bytes())
 	} else {
-		// in EVM this comes from the int pool
-		// TODO: why?
 		s.Push(new(big.Int).SetUint64(1).Bytes())
 	}
 }

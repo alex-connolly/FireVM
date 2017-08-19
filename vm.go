@@ -1,8 +1,6 @@
 package firevm
 
 import (
-	"math/big"
-
 	"github.com/end-r/firevm/ops"
 	"github.com/end-r/vmgen"
 )
@@ -49,19 +47,19 @@ var (
 		"CALLVALUE":    ops.CallValue,
 		"CALLDATALOAD": ops.CallDataLoad,
 		"CALLDATASIZE": ops.CallDataSize,
-		"CALLDATACOPY": ops.CallDataCops.y,
+		"CALLDATACOPY": ops.CallDataCopy,
 		"CODESIZE":     ops.CodeSize,
-		"CODECOPY":     ops.CodeCops.y,
+		"CODECOPY":     ops.CodeCopy,
 		"FUELPRICE":    ops.FuelPrice,
 		"EXTCODESIZE":  ops.ExtCodeSize,
-		"EXTCODECOPY":  ops.ExtCodeCops.y,
+		"EXTCODECOPY":  ops.ExtCodeCopy,
 		// crypto operations
 		"SHA3": ops.SHA3,
 		//stack operations
-		"Pops.": ops.Pop,
-		"PUSH":  ops.Push,
-		"DUP":   ops.Dup,
-		"SWAP":  ops.Swap,
+		"POP.": ops.Pop,
+		"PUSH": ops.Push,
+		"DUP":  ops.Dup,
+		"SWAP": ops.Swap,
 		// external operations
 		"LOG": ops.Log,
 		// flow operations
@@ -69,33 +67,15 @@ var (
 		"JUMPI":    ops.JumpI,
 		"PC":       ops.PC,
 		"FUEL":     ops.Fuel,
-		"MSIZE":    ops.MSize,
+		"MEMSIZE":  ops.MemSize,
 		"JUMPDEST": ops.JumpDest,
+		// memory operations
+		"SET":   ops.Set,
+		"GET":   ops.Get,
+		"LOAD":  ops.Load,
+		"STORE": ops.Store,
 	}
 )
-
-// Context provides the EVM with auxiliary information. Once provided
-// it shouldn't be modified.
-type Context struct {
-	// CanTransfer returns whether the account contains
-	// sufficient ether to transfer the value
-	CanTransfer CanTransferFunc
-	// Transfer transfers ether from one account to the other
-	Transfer TransferFunc
-	// GetHash returns the hash corresponding to n
-	GetHash GetHashFunc
-
-	// Message information
-	Origin   Address  // Provides information for ORIGIN
-	GasPrice *big.Int // Provides information for GASPRICE
-
-	// Block information
-	Coinbase    Address  // Provides information for COINBASE
-	GasLimit    *big.Int // Provides information for GASLIMIT
-	BlockNumber *big.Int // Provides information for NUMBER
-	Time        *big.Int // Provides information for TIME
-	Difficulty  *big.Int // Provides information for DIFFICULTY
-}
 
 // NewVM returns a new FireVM instance
 func NewVM() *vmgen.VM {

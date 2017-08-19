@@ -1,5 +1,7 @@
 package memory
 
+import "github.com/end-r/firevm"
+
 // FireStorage ...
 type FireStorage map[firevm.Hash]firevm.Hash
 

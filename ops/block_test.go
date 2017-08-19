@@ -9,7 +9,11 @@ import (
 )
 
 func TestBlockhash(t *testing.T) {
-
+	s := new(vmgen.Stack)
+	e := make(vmgen.Environment)
+	goutil.Assert(t, s.Size() == 0, "wrong starting size")
+	e["blockhash"] = []byte("random")
+	executeBlockhash(s, e)
 }
 
 func TestCoinbase(t *testing.T) {

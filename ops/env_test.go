@@ -65,8 +65,7 @@ func TestCallDataSize(t *testing.T) {
 	goutil.Assert(t, s.Size() == 0, "wrong stack size (not 0)")
 	executeCallDataSize(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size (not 1)")
-}
-
+}s
 func TestCallDataCopy(t *testing.T) {
 	s := new(vmgen.Stack)
 	executeCallDataCopy(s)

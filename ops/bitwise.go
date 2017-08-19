@@ -12,8 +12,8 @@ func And(vm *vmgen.VM) {
 }
 
 func executeAnd(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).And(a, b)
 	s.Push(c.Bytes())
 }
@@ -24,8 +24,8 @@ func Or(vm *vmgen.VM) {
 }
 
 func executeOr(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).Or(a, b)
 	s.Push(c.Bytes())
 }
@@ -36,8 +36,8 @@ func Xor(vm *vmgen.VM) {
 }
 
 func executeXor(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).Xor(a, b)
 	s.Push(c.Bytes())
 }
@@ -48,7 +48,7 @@ func Not(vm *vmgen.VM) {
 }
 
 func executeNot(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
 	b := new(big.Int).Not(a)
 	s.Push(b.Bytes())
 }

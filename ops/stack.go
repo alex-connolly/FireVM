@@ -8,7 +8,7 @@ func Pop(vm *vmgen.VM) {
 }
 
 func executePop(s *vmgen.Stack) {
-	s.Pop(1)
+	s.Pop()
 }
 
 // Push ...

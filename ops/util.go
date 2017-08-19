@@ -2,6 +2,6 @@ package ops
 
 import "math/big"
 
-func createBigInt(bytes []byte) *big.Int {
+func bigInt(bytes []byte) *big.Int {
 	return new(big.Int).SetBytes(bytes)
 }

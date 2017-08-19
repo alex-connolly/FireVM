@@ -13,19 +13,19 @@ func Address(vm *vmgen.VM) {
 	executeAddress(vm.Stack, vm.Contract)
 }
 
-func executeAddress(s *vmgen.Stack, c *vmgen.Contract) {
-	s.Push(c.Address)
+func executeAddress(s *vmgen.Stack, c *vmgen) {
+	s.Push(c.Address.Bytes())
 }
 
 // Balance ...
 func Balance(vm *vmgen.VM) {
-	executeBalance(vm.Stack, vm.Contract)
+	executeBalance(vm.Stack, vm.State)
 }
 
-func executeBalance(s *vmgen.Stack, state *vmgen.State) {
-	a := axia.BigToAddress(s.Pop(1))
+func executeBalance(s *vmgen.Stack, state vmgen.State) {
+	a := axia.BytesToAddress(s.Pop())
 	balance := state.GetBalance(a)
-	s.Push(new(big.Int).Set(balance))
+	s.Push(balance.Bytes())
 }
 
 // Origin ...
@@ -34,7 +34,7 @@ func Origin(vm *vmgen.VM) {
 }
 
 func executeOrigin(s *vmgen.Stack, a vmgen.Address) {
-	s.Push(a.Big())
+	s.Push(a.Bytes())
 }
 
 // Caller ...
@@ -43,47 +43,47 @@ func Caller(vm *vmgen.VM) {
 }
 
 func executeCaller(s *vmgen.Stack, c *vmgen.Contract) {
-	s.Push(createBigInt(c.Caller().Bytes()))
+	s.Push(c.Caller.Bytes())
 }
 
 // CallValue ...
 func CallValue(vm *vmgen.VM) {
-	executeCallValue(vm.Stack)
+	executeCallValue(vm.Stack, vm.Contract)
 }
 
 func executeCallValue(s *vmgen.Stack, c *vmgen.Contract) {
-	a := createBigInt(c.value)
-	s.Push(a)
+	s.Push(c.Value())
 }
 
 // CallDataLoad ...
 func CallDataLoad(vm *vmgen.VM) {
-	executeCallDataLoad(vm.Stack)
+	executeCallDataLoad(vm.Stack, vm.Contract)
 }
 
 func executeCallDataLoad(s *vmgen.Stack, c *vmgen.Contract) {
-	s.Push(createBigInt(getData(c.Input, s.Pop(1), new(big.Int).SetInt64(32))))
+	cd := getData(c.Input, s.Pop(), new(big.Int).SetInt64(32))
+	s.Push(cd)
 }
 
 // CallDataSize ...
 func CallDataSize(vm *vmgen.VM) {
-	executeCallDataSize(vm.Stack)
+	executeCallDataSize(vm.Stack, vm.Contract)
 }
 
 func executeCallDataSize(s *vmgen.Stack, c *vmgen.Contract) {
 	a := new(big.Int).SetInt64(int64(len(c.Input)))
-	s.Push(a)
+	s.Push(a.Bytes())
 }
 
 // CallDataCopy ...
 func CallDataCopy(vm *vmgen.VM) {
-	executeCallDataCopy(vm.Stack, vm.Memory["memory"], vm.Contract)
+	//executeCallDataCopy(vm.Stack, vm.Memory["memory"], vm.Contract)
 }
 
 func executeCallDataCopy(s *vmgen.Stack, m vmgen.Memory, c vmgen.Contract) {
-	mOff := s.Pop(1)
-	cOff := s.Pop(1)
-	l := s.Pop(1)
+	mOff := s.Pop()
+	cOff := s.Pop()
+	l := s.Pop()
 	m.Set(mOff.Uint64(), l.Uint64(), getData(c.Input, cOff, l))
 }
 
@@ -103,14 +103,13 @@ func CodeCopy(vm *vmgen.VM) {
 }
 
 func executeCodeCopy(s *vmgen.Stack, c vmgen.Contract) {
-	mOff := s.Pop(1)
-	cOff := s.Pop(1)
-	l := s.Pop(1)
+	mOff := s.Pop()
+	cOff := s.Pop()
+	l := s.Pop()
 	codeCopy := getData(contract.Code, cOff, l)
 
 	memory.Set(mOff.Uint64(), l.Uint64(), codeCopy)
 
-	evm.interpreter.intPool.put(mOff, cOff, l)
 	return nil, nil
 }
 
@@ -130,8 +129,8 @@ func ExtCodeSize(vm *vmgen.VM) {
 }
 
 func executeExtCodeSize(s *vmgen.Stack, state vmgen.State) {
-	a := s.Pop(1)
-	addr := bytesToAddress(a)
+	a := s.Pop()
+	addr := axia.BytesToAddress(a)
 	a.SetInt64(state.GetCodeSize(addr))
 	s.Push(a)
 }

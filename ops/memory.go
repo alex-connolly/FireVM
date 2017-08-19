@@ -1,47 +1,44 @@
 package ops
 
 import (
-	"math/big"
-
 	"github.com/end-r/vmgen"
 )
 
-// MLoad ...
-func MLoad(vm *vmgen.VM) {
-	executeMLoad(vm.Stack, vm.Memory["memory"])
+// Get ...
+func Get(vm *vmgen.VM) {
+	executGet(vm.Stack, vm.Memory["memory"])
 }
 
-func executeMLoad(s *vmgen.Stack, m vmgen.Memory) {
+func executeGet(s *vmgen.Stack, m vmgen.Memory) {
 	offset := s.Pop(1)
-	val := new(big.Int).SetBytes(m.Get(offset.Int64(), 32))
+	val := bigInt(m.Get(offset.Int64(), 32))
 	s.Push(val)
 }
 
 // MStore ...
-func MStore(vm *vmgen.VM) {
-	executeMStore(vm.Stack, vm.Memory["memory"])
+func Set(vm *vmgen.VM) {
+	executeSet(vm.Stack, vm.Memory["memory"])
 }
 
-func executeMStore(s *vmgen.Stack, m vmgen.Memory) {
+func executeSet(s *vmgen.Stack, m vmgen.Memory) {
 	start, val := s.Pop(1), s.Pop(1)
 	m.Set(start.Uint64(), 32, math.PaddedBigBytes(val, 32))
 }
 
-// SLoad ...
-func SLoad(vm *vmgen.VM) {
-	executeSLoad(vm.Stack, vm.Contract, vm.State)
+// Load ...
+func Load(vm *vmgen.VM) {
+	executeLoad(vm.Stack, vm.Contract, vm.State)
 }
 
-func executeSLoad(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
-
+func executeLoad(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
 	s.Push(val)
 }
 
-// SStore ...
-func SStore(vm *vmgen.VM) {
-	executeSStore(vm.Stack, vm.Contract, vm.State)
+// Store ...
+func Store(vm *vmgen.VM) {
+	executeStore(vm.Stack, vm.Contract, vm.State)
 }
 
-func executeSStore(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
+func executeStore(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
 
 }

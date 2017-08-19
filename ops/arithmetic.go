@@ -16,8 +16,8 @@ func Add(vm *vmgen.VM) {
 }
 
 func executeAddition(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).Add(a, b)
 	s.Push(c.Bytes())
 }
@@ -28,8 +28,8 @@ func Sub(vm *vmgen.VM) {
 }
 
 func executeSubtraction(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).Sub(a, b)
 	s.Push(c.Bytes())
 }
@@ -40,8 +40,8 @@ func Mul(vm *vmgen.VM) {
 }
 
 func executeMultiplication(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).Mul(a, b)
 	s.Push(c.Bytes())
 }
@@ -52,8 +52,8 @@ func Div(vm *vmgen.VM) {
 }
 
 func executeDivision(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).Div(a, b)
 	s.Push(c.Bytes())
 }
@@ -64,8 +64,8 @@ func Mod(vm *vmgen.VM) {
 }
 
 func executeModulo(s *vmgen.Stack) {
-	a := createBigInt(s.Pop(1))
-	b := createBigInt(s.Pop(1))
+	a := bigInt(s.Pop())
+	b := bigInt(s.Pop())
 	c := new(big.Int).Mod(a, b)
 	s.Push(c.Bytes())
 }
@@ -76,9 +76,9 @@ func AddMod(vm *vmgen.VM) {
 }
 
 func executeAddMod(s *vmgen.Stack) {
-	x := createBigInt(s.Pop(1))
-	y := createBigInt(s.Pop(1))
-	z := createBigInt(s.Pop(1))
+	x := bigInt(s.Pop())
+	y := bigInt(s.Pop())
+	z := bigInt(s.Pop())
 	if z.Cmp(bigZero) > 0 {
 		a := x.Add(x, y)
 		a.Mod(a, z)
@@ -94,9 +94,9 @@ func MulMod(vm *vmgen.VM) {
 }
 
 func executeMulMod(s *vmgen.Stack) {
-	x := createBigInt(s.Pop(1))
-	y := createBigInt(s.Pop(1))
-	z := createBigInt(s.Pop(1))
+	x := bigInt(s.Pop())
+	y := bigInt(s.Pop())
+	z := bigInt(s.Pop())
 	if z.Cmp(bigZero) > 0 {
 		m := x.Add(x, y)
 		m.Mod(m, z)
