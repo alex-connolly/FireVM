@@ -4,9 +4,19 @@ import "fmt"
 
 // FireMemory ...
 type FireMemory struct {
+	capacity    int
 	store       []byte
 	lastGasCost uint64
 	lastReturn  []byte
+}
+
+func NewFireMemory(capacity int) *FireMemory {
+	m := new(FireMemory)
+	m.capacity = capacity
+}
+
+func (m *FireMemory) Size() int {
+	return capacity
 }
 
 // Set sets offset + size to value

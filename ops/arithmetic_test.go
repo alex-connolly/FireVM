@@ -50,7 +50,7 @@ func TestDiv(t *testing.T) {
 	executeDivision(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	c := new(big.Int).SetBytes(s.Pop())
-	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1/o2))) == 0, fmt.Sprintf("wrong div value: %s", c.String()))
+	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1/o2))) == 0, fmt.Sprintf("wrong div value: %d", c.Int64()))
 }
 
 func TestMod(t *testing.T) {
@@ -61,7 +61,7 @@ func TestMod(t *testing.T) {
 	executeModulo(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	c := new(big.Int).SetBytes(s.Pop())
-	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1%o2))) == 0, "wrong mod value")
+	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1%o2))) == 0, fmt.Sprintf("wrong mod value: %d", c.Int64()))
 }
 
 func TestAddMod(t *testing.T) {

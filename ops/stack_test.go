@@ -38,5 +38,6 @@ func TestDup(t *testing.T) {
 }
 
 func TestSwap(t *testing.T) {
-
+	s := new(vmgen.Stack)
+	goutil.Assert(t, s.Size() == 0, "wrong stack size")
 }

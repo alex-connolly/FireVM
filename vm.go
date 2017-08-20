@@ -79,5 +79,5 @@ var (
 
 // NewVM returns a new FireVM instance
 func NewVM() *vmgen.VM {
-	return vmgen.CreateVM(vmPath, executes, fuels)
+	return vmgen.CreateVM(vmPath, nil, executes, fuels, nil)
 }

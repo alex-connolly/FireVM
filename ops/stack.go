@@ -1,6 +1,10 @@
 package ops
 
-import "github.com/end-r/vmgen"
+import (
+	"math/big"
+
+	"github.com/end-r/vmgen"
+)
 
 // Pop ...
 func Pop(vm *vmgen.VM) {
@@ -17,8 +21,9 @@ func Push(vm *vmgen.VM) {
 }
 
 func executePush(s *vmgen.Stack, i vmgen.Input) {
-	//size := i.Code().Next(1)
-	//vm.Stack.Push(vm.Next(size.Int64()))
+	size := i.Code().Next(1)
+	pushSize := int(new(big.Int).SetBytes(size).Int64())
+	s.Push(i.Code().Next(pushSize))
 }
 
 // Dup ...
@@ -27,8 +32,9 @@ func Dup(vm *vmgen.VM) {
 }
 
 func executeDup(s *vmgen.Stack, i vmgen.Input) {
-	//size := i.Code().Next(1)
-	//s.Dup(size)
+	size := int(new(big.Int).SetBytes(i.Code().Next(1)).Int64())
+	dupSize := int(new(big.Int).SetBytes(i.Code().Next(size)).Int64())
+	s.Dup(dupSize)
 }
 
 // Swap ...
@@ -37,6 +43,7 @@ func Swap(vm *vmgen.VM) {
 }
 
 func executeSwap(s *vmgen.Stack, i vmgen.Input) {
-	//size := i.Code().Next(1)
-	//s.Swap(size)
+	size := int(new(big.Int).SetBytes(i.Code().Next(1)).Int64())
+	swapSize := int(new(big.Int).SetBytes(i.Code().Next(size)).Int64())
+	s.Swap(swapSize)
 }
