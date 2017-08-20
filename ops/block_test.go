@@ -13,7 +13,7 @@ func TestBlockhash(t *testing.T) {
 	e := make(vmgen.Environment)
 	goutil.Assert(t, s.Size() == 0, "wrong starting size")
 	e["blockhash"] = []byte("random")
-	executeBlockhash(s, e)
+	pushBytes(s, e["blockhash"])
 }
 
 func TestCoinbase(t *testing.T) {
@@ -21,15 +21,15 @@ func TestCoinbase(t *testing.T) {
 	e := make(vmgen.Environment)
 	goutil.Assert(t, s.Size() == 0, "wrong starting size")
 	e["coinbase"] = []byte("random")
-	executeCoinbase(s, e)
+	pushBytes(s, e["coinbase"])
 }
 
 func TestTimestamp(t *testing.T) {
 	s := new(vmgen.Stack)
 	e := make(vmgen.Environment)
 	goutil.Assert(t, s.Size() == 0, "wrong starting size")
-	e["coinbase"] = []byte("random")
-	executeCoinbase(s, e)
+	e["timestamp"] = []byte("random")
+	pushBytes(s, e["timestamp"])
 }
 
 func TestNumber(t *testing.T) {
@@ -37,7 +37,7 @@ func TestNumber(t *testing.T) {
 	e := make(vmgen.Environment)
 	goutil.Assert(t, s.Size() == 0, "wrong starting size")
 	e["blockNumber"] = []byte("random")
-	executeNumber(s, e)
+	pushBytes(s, e["blockNumber"])
 }
 
 func TestDifficulty(t *testing.T) {
@@ -45,13 +45,9 @@ func TestDifficulty(t *testing.T) {
 	e := make(vmgen.Environment)
 	goutil.Assert(t, s.Size() == 0, "wrong starting size")
 	e["difficulty"] = []byte("random")
-	executeDifficulty(s, e)
+	pushBytes(s, e["difficulty"])
 }
 
 func TestFuelLimit(t *testing.T) {
-	s := new(vmgen.Stack)
-	e := make(vmgen.Environment)
-	goutil.Assert(t, s.Size() == 0, "wrong starting size")
-	e["fuelLimit"] = []byte("random")
-	executeFuelLimit(s, e)
+
 }

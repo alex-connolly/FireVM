@@ -231,7 +231,7 @@ category("MEMORY"){
     }
 }
 
-category("STACK"){
+category("Stack"){
     instruction("POP", "60"){
 
     }
@@ -242,6 +242,19 @@ category("STACK"){
 
     }
     instruction("SWAP", "63"){
+
+    }
+}
+
+category("Structures"){
+
+    description = "Creating structures."
+
+    instruction("ARRAY", "A0"){
+
+    }
+
+    instruction("MAP", "A1"){
 
     }
 }

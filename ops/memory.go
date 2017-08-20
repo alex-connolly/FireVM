@@ -6,39 +6,39 @@ import (
 
 // Get ...
 func Get(vm *vmgen.VM) {
-	executGet(vm.Stack, vm.Memory["memory"])
+	//executeGet(vm.Stack, vm.Memory["memory"])
 }
 
 func executeGet(s *vmgen.Stack, m vmgen.Memory) {
-	offset := s.Pop(1)
+	/*offset := s.Pop()
 	val := bigInt(m.Get(offset.Int64(), 32))
-	s.Push(val)
+	s.Push(val)*/
 }
 
-// MStore ...
+// Set ...
 func Set(vm *vmgen.VM) {
-	executeSet(vm.Stack, vm.Memory["memory"])
+	//executeSet(vm.Stack, vm.Memory["memory"])
 }
 
 func executeSet(s *vmgen.Stack, m vmgen.Memory) {
-	start, val := s.Pop(1), s.Pop(1)
-	m.Set(start.Uint64(), 32, math.PaddedBigBytes(val, 32))
+	//start, val := s.Pop(), s.Pop()
+	//m.Set(start.Uint64(), 32, math.PaddedBigBytes(val, 32))
 }
 
 // Load ...
 func Load(vm *vmgen.VM) {
-	executeLoad(vm.Stack, vm.Contract, vm.State)
+	executeLoad(vm.Stack, vm.Input, vm.State)
 }
 
-func executeLoad(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
-	s.Push(val)
+func executeLoad(s *vmgen.Stack, i vmgen.Input, state vmgen.State) {
+	//s.Push(val)
 }
 
 // Store ...
 func Store(vm *vmgen.VM) {
-	executeStore(vm.Stack, vm.Contract, vm.State)
+	executeStore(vm.Stack, vm.Input, vm.State)
 }
 
-func executeStore(s *vmgen.Stack, c *vmgen.Contract, state vmgen.State) {
+func executeStore(s *vmgen.Stack, i vmgen.Input, state vmgen.State) {
 
 }
