@@ -37,3 +37,7 @@ func (s FireStorage) Copy() (f FireStorage) {
 	}
 	return f
 }
+
+func (s FireStorage) DisplayContents() {
+
+}

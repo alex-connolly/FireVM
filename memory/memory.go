@@ -48,3 +48,7 @@ func (m *FireMemory) Get(offset, size int64) (cpy []byte) {
 	}
 	return
 }
+
+func (s *FireMemory) DisplayContents() {
+
+}

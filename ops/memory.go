@@ -4,7 +4,6 @@ import (
 	"math/big"
 
 	"github.com/end-r/firevm/memory"
-	"github.com/end-r/go-axia/axia"
 	"github.com/end-r/vmgen"
 )
 
@@ -13,7 +12,8 @@ func MemSize(vm *vmgen.VM) {
 }
 
 func executeMemSize(s *vmgen.Stack, m vmgen.Memory) {
-	size := new(big.Int).SetInt64(int(m.Size()))
+	fm := m.(memory.FireMemory)
+	size := new(big.Int).SetInt64(int(fm.Size()))
 	s.Push(size.Bytes())
 }
 
@@ -48,9 +48,9 @@ func Load(vm *vmgen.VM) {
 }
 
 func executeLoad(s *vmgen.Stack, i vmgen.Input, state vmgen.State) {
-	key := axia.HashBytes(s.Pop)
+	/*key := axia.HashBytes(s.Pop())
 	val := state.Get(i.Address(), key)
-	stack.push(val)
+	s.Push(val)*/
 }
 
 // Store data in state
@@ -59,7 +59,7 @@ func Store(vm *vmgen.VM) {
 }
 
 func executeStore(s *vmgen.Stack, i vmgen.Input, state vmgen.State) {
-	key := axia.HashBytes(s.Pop())
+	/*key := axia.HashBytes(s.Pop())
 	val := axia.HashBytes(s.Pop())
-	state.Set(i.Address(), key, val)
+	state.Set(i.Address(), key, val)*/
 }
