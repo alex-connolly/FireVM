@@ -105,3 +105,15 @@ func executeMulMod(s *vmgen.Stack) {
 		s.Push(new(big.Int).Bytes())
 	}
 }
+
+// Concat ...
+func Concat(vm *vmgen.VM) {
+	executeConcat(vm.Stack)
+}
+
+func executeConcat(s *vmgen.Stack) {
+	a := s.Pop()
+	b := s.Pop()
+	c := append(a, b...)
+	s.Push(c)
+}

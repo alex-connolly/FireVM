@@ -20,6 +20,7 @@ var (
 		"MOD":    ops.Mod,
 		"ADDMOD": ops.AddMod,
 		"MULMOD": ops.MulMod,
+		"CONCAT": ops.Concat,
 		// comparison operations
 		"LT":     ops.Lt,
 		"GT":     ops.Gt,

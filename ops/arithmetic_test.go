@@ -86,3 +86,15 @@ func TestMulMod(t *testing.T) {
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	//c := new(big.Int).SetBytes(s.Pop())
 }
+
+func TestConcat(t *testing.T) {
+	s := new(vmgen.Stack)
+	s1 := "hello"
+	s2 := "world"
+	s.Push([]byte(s1))
+	s.Push([]byte(s2))
+	executeConcat(s)
+	goutil.Assert(t, s.Size() == 1, "wrong stack size")
+	p := s1 + s2
+	goutil.Assert(t, len(s.Pop()) == len([]byte(p)), "wrong value")
+}

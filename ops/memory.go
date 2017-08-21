@@ -8,18 +8,18 @@ import (
 )
 
 func MemSize(vm *vmgen.VM) {
-	executeMemSize(vm.Stack, vm.Memory["memory"])
+	//executeMemSize(vm.Stack, vm.Memory["memory"])
 }
 
 func executeMemSize(s *vmgen.Stack, m vmgen.Memory) {
 	fm := m.(memory.FireMemory)
-	size := new(big.Int).SetInt64(int(fm.Size()))
+	size := new(big.Int).SetInt64(int64(fm.Size()))
 	s.Push(size.Bytes())
 }
 
 // Get from memory
 func Get(vm *vmgen.VM) {
-	executeGet(vm.Stack, vm.Memory["memory"])
+	//executeGet(vm.Stack, vm.Memory["memory"])
 }
 
 func executeGet(s *vmgen.Stack, m vmgen.Memory) {
@@ -31,7 +31,7 @@ func executeGet(s *vmgen.Stack, m vmgen.Memory) {
 
 // Set data to memory
 func Set(vm *vmgen.VM) {
-	executeSet(vm.Stack, vm.Memory["memory"])
+	//executeSet(vm.Stack, vm.Memory["memory"])
 }
 
 func executeSet(s *vmgen.Stack, m vmgen.Memory) {

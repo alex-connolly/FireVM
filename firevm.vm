@@ -33,6 +33,11 @@ category("ARITHMETIC"){
     instruction("MOD", "05"){
         validate = 2
     }
+
+    instruction("CONCAT", "0A"){
+        description = "Concatenates two byte arrays"
+        validate = 2
+    }
 }
 
 category("Crypto"){
