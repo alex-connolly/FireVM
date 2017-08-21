@@ -12,64 +12,64 @@ import (
 func TestAdd(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
-	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o2)).Bytes())
+	s.Push(intAsBig(o1).Bytes())
+	s.Push(intAsBig(o2).Bytes())
 	executeAddition(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	c := new(big.Int).SetBytes(s.Pop())
-	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1+o2))) == 0, "wrong add value")
+	goutil.Assert(t, c.Cmp(intAsBig(o1+o2)) == 0, "wrong add value")
 }
 
 func TestSub(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
-	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o2)).Bytes())
+	s.Push(intAsBig(o1).Bytes())
+	s.Push(intAsBig(o2).Bytes())
 	executeSubtraction(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	c := new(big.Int).SetBytes(s.Pop())
-	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1-o2))) == 0, "wrong sub value")
+	goutil.Assert(t, c.Cmp(intAsBig(o1-o2)) == 0, "wrong sub value")
 }
 
 func TestMul(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
-	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o2)).Bytes())
+	s.Push(intAsBig(o1).Bytes())
+	s.Push(intAsBig(o2).Bytes())
 	executeMultiplication(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	c := new(big.Int).SetBytes(s.Pop())
-	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1*o2))) == 0, "wrong mul value")
+	goutil.Assert(t, c.Cmp(intAsBig(o1*o2)) == 0, "wrong mul value")
 }
 
 func TestDiv(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
-	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o2)).Bytes())
+	s.Push(intAsBig(o1).Bytes())
+	s.Push(intAsBig(o2).Bytes())
 	executeDivision(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	c := new(big.Int).SetBytes(s.Pop())
-	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1/o2))) == 0, fmt.Sprintf("wrong div value: %d", c.Int64()))
+	goutil.Assert(t, c.Cmp(intAsBig(o1/o2)) == 0, fmt.Sprintf("wrong div value: %d", c.Int64()))
 }
 
 func TestMod(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2 := 4, 2
-	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o2)).Bytes())
+	s.Push(intAsBig(o1).Bytes())
+	s.Push(intAsBig(o2).Bytes())
 	executeModulo(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	c := new(big.Int).SetBytes(s.Pop())
-	goutil.Assert(t, c.Cmp(new(big.Int).SetInt64(int64(o1%o2))) == 0, fmt.Sprintf("wrong mod value: %d", c.Int64()))
+	goutil.Assert(t, c.Cmp(intAsBig(o1%o2)) == 0, fmt.Sprintf("wrong mod value: %d", c.Int64()))
 }
 
 func TestAddMod(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2, o3 := 4, 2, 1
-	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o2)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o3)).Bytes())
+	s.Push(intAsBig(o1).Bytes())
+	s.Push(intAsBig(o2).Bytes())
+	s.Push(intAsBig(o3).Bytes())
 	executeAddMod(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	//c := new(big.Int).SetBytes(s.Pop())
@@ -79,9 +79,9 @@ func TestAddMod(t *testing.T) {
 func TestMulMod(t *testing.T) {
 	s := new(vmgen.Stack)
 	o1, o2, o3 := 4, 2, 1
-	s.Push(new(big.Int).SetInt64(int64(o1)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o2)).Bytes())
-	s.Push(new(big.Int).SetInt64(int64(o3)).Bytes())
+	s.Push(intAsBig(o1).Bytes())
+	s.Push(intAsBig(o2).Bytes())
+	s.Push(intAsBig(o3).Bytes())
 	executeMulMod(s)
 	goutil.Assert(t, s.Size() == 1, "wrong stack size")
 	//c := new(big.Int).SetBytes(s.Pop())

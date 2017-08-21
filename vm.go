@@ -1,6 +1,8 @@
 package firevm
 
 import (
+	"log"
+
 	"github.com/end-r/firevm/ops"
 	"github.com/end-r/vmgen"
 )
@@ -80,5 +82,10 @@ var (
 
 // NewVM returns a new FireVM instance
 func NewVM() *vmgen.VM {
-	return vmgen.CreateVM(vmPath, nil, executes, fuels, nil)
+	vm, errs := vmgen.CreateVM(vmPath, nil, executes, fuels, nil)
+	if errs != nil {
+		log.Println(errs)
+		return nil
+	}
+	return vm
 }
