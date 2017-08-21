@@ -1,25 +1,39 @@
 package memory
 
-import "github.com/end-r/firevm"
+import "github.com/end-r/go-axia/axia"
 
 // FireStorage ...
-type FireStorage map[firevm.Hash]firevm.Hash
+type FireStorage struct {
+	data map[axia.Hash]axia.Hash
+}
 
-func (s FireStorage) Set(key, value []byte) {
+// NewFireStorage ...
+func NewFireStorage() *FireStorage {
+	s := new(FireStorage)
+	s.data = make(map[axia.Hash]axia.Hash)
+	return s
+}
+
+// Set ...
+func (s FireStorage) Set(key, value axia.Hash) {
 	s.data[key] = value
 }
 
-func (s FireStorage) Get(key []byte) []byte {
+// Get ...
+func (s FireStorage) Get(key axia.Hash) axia.Hash {
 	return s.data[key]
 }
 
+// Size ...
 func (s FireStorage) Size() int {
 	return len(s.data)
 }
 
+// Copy ...
 func (s FireStorage) Copy() (f FireStorage) {
-	for k, v := range s {
-		f[k] = v
+	f.data = make(map[axia.Hash]axia.Hash)
+	for k, v := range s.data {
+		f.data[k] = v
 	}
 	return f
 }
