@@ -7,7 +7,6 @@ import (
 	"github.com/end-r/vmgen"
 )
 
-<<<<<<< HEAD
 const vm = `
 name = "FireVM"
 author = "ender"
@@ -283,11 +282,6 @@ category("Structures"){
     }
 }
 `
-=======
-const (
-	vmPath = "firevm.vm"
-)
->>>>>>> 1196ab95c9ff2beaa06eabcc4b33a8e34086b812
 
 var (
 	fuels    = map[string]vmgen.FuelFunction{}
@@ -360,11 +354,7 @@ var (
 
 // NewVM returns a new FireVM instance
 func NewVM() *vmgen.VM {
-<<<<<<< HEAD
 	vm, errs := vmgen.CreateVM(vm, nil, executes, fuels, nil)
-=======
-	vm, errs := vmgen.CreateVM(vmPath, nil, executes, fuels, nil)
->>>>>>> 1196ab95c9ff2beaa06eabcc4b33a8e34086b812
 	if errs != nil {
 		log.Println(errs)
 		return nil
